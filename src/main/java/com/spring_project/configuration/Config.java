@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(basePackages={"com.spring_project"})
 public class Config {
 
-	@Bean(name ="em")
+	@Bean(name ="emf")
 	@Scope(value="prototype")
 	public EntityManager getEm(){
 		return Persistence.createEntityManagerFactory("project").createEntityManager();
