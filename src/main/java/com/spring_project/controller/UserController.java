@@ -37,17 +37,35 @@ public class UserController {
 	
 	@RequestMapping("usersignup")
 	public ModelAndView saveUser(@ModelAttribute User user){
+		service.saveUser(user);
 		ModelAndView modelAndView=new ModelAndView();
-		modelAndView.addObject("user", user);
-		modelAndView.setViewName("application.jsp");
+		modelAndView.addObject("user", new User());
+		modelAndView.setViewName("index.jsp");
 		return modelAndView;	
 	}
 	
-	@RequestMapping("saveapplication")
-	public ModelAndView saveApplication(@ModelAttribute Application application){
+	@RequestMapping("userlogin")
+	public ModelAndView verifyUser(@ModelAttribute User user) {
 		ModelAndView modelAndView=new ModelAndView();
-		modelAndView.addObject("application", new Application());
-		modelAndView.setViewName("application.jsp");
+		User user2=service.getByEmail(user);
+		if(user2!=null)
+		{
+			modelAndView.addObject("user", user2.getName());
+			modelAndView.addObject("ulist", service.getAllUser());
+			modelAndView.setViewName("viewuser.jsp");
+		}
+		else
+		{
+			modelAndView.setViewName("login.jsp");
+		}
+		return modelAndView;
+	}
+	
+	@RequestMapping("saveapplication")
+	public ModelAndView saveApplication(){
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.addObject("user", new User());
+		modelAndView.setViewName("signup.jsp");
 		return modelAndView;
 	}
 
