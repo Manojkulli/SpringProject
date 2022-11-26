@@ -57,7 +57,7 @@ public class UserDao {
 public User getByEmail(String email) {
 		
 	Query query=entityManager.createQuery("Select u from User u where u.email=?1",User.class);
-	User user=(User)query.getSingleResult();
+	User user=(User)query.setParameter(1, email).getSingleResult();
 	return user;
 	}
 	

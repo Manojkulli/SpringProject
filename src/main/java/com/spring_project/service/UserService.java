@@ -26,4 +26,21 @@ public class UserService {
 		list.add(application);
 		return list;
 	}
+	
+	public User getByEmail(User user)
+	{
+		User received = dao.getByEmail(user.getEmail());
+		if(user.getPassword().equals(received.getPassword()))
+		{
+			return received;
+		}
+		else
+			return null;
+		
+	}
+	
+	public List<User> getAllUser()
+	{
+		return dao.getAllUser();
+	}
 }
