@@ -24,6 +24,8 @@
 
 		<input type="submit" name="submit">
 		<input type="reset" name="reset">
+		
+		<a href="exit">Exit</a>
 
 	</form:form>
 </body>

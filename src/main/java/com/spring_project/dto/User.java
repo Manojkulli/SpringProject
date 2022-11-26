@@ -19,7 +19,7 @@ public class User {
 	private String password;
 	private String role;
 	
-	@OneToMany(cascade= CascadeType.ALL)
+	@OneToMany	(cascade =CascadeType.ALL)
 	private List<Application> application;
 
 	public int getId() {

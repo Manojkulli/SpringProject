@@ -9,7 +9,19 @@
 </head>
 <body>
 
+<form:form action="userlogin" modelAttribute="user">
 
+		<form:label path="email">Email:</form:label>
+		<form:input path="email" />
+		<br>
+
+		<form:label path="password">Password:</form:label>
+		<form:input path="password" />
+		<br>
+		
+		<input type="submit" name="submit">
+
+	</form:form>
 
 </body>
 </html>

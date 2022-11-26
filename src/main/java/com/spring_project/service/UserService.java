@@ -26,4 +26,31 @@ public class UserService {
 		list.add(application);
 		return list;
 	}
+	
+	public User getByEmail(User user){
+
+		User user1=dao.findByEmail(user.getEmail());
+		if(user1.getPassword().equals(user.getPassword())){
+			return user1;
+		}else{
+			return null;
+		}
+	}
+	
+	public User saveApplication(User user){
+		
+		User user1= dao.findById(user.getId());
+		dao.updateUser(user1);
+		
+		return user1;
+	}
+	
+	public List<Application> getAllApplication(User user){
+		User user1=dao.getAllApplication(user);
+		return user1.getApplication();
+	}
+	
+	public Application getById(int id){
+		return dao.findApplicationById(id);
+	}
 }
