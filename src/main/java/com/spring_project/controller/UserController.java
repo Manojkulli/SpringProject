@@ -1,8 +1,10 @@
 package com.spring_project.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.spring_project.dto.Application;
 import com.spring_project.dto.User;
 import com.spring_project.service.UserService;
+
 
 
 @Controller
@@ -81,8 +84,7 @@ public class UserController {
 		}else{
 			modelAndView.setViewName("login.jsp");	
 		}
-		return modelAndView;
-		
+		return modelAndView;	
 	}
 	
 	@RequestMapping("exit")
@@ -102,17 +104,34 @@ public class UserController {
 		modelAndView.addObject("list", service.getAllApplication(user1));
 		modelAndView.setViewName("view.jsp");
 		return modelAndView;
-		
 	}
 	
 	@RequestMapping("view")
 	public ModelAndView editStudent(@RequestParam int id){
 		
 		ModelAndView modelAndView=new ModelAndView();
-		Application application=service.getById(id);
+		Application application=service.getByIdd(id);
 		modelAndView.addObject("application", application);
 		modelAndView.setViewName("viewdetails.jsp");
 		return modelAndView;
+	}
+	
+	@RequestMapping("edit")
+	public ModelAndView editApplication(@RequestParam int id){
+		
+		ModelAndView modelAndView=new ModelAndView();
+		Application application=service.getByIdd(id);
+		modelAndView.addObject("application", application);
+		modelAndView.setViewName("edit.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping("updateapplication")
+	public void updateStudent(@ModelAttribute Application application,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
+		
+		service.getById(application);
+		request.getRequestDispatcher("view").forward(request, response);
+		
 	}
 
 }

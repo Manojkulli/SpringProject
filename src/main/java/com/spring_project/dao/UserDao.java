@@ -55,4 +55,13 @@ public class UserDao {
 	public Application findApplicationById(int id) {
 		return entityManager.find(Application.class, id);
 	}
+	
+	public Application updateApplication(Application application){
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		Application application1=entityManager.find(Application.class, application.getId());
+		entityTransaction.begin();
+		entityManager.merge(application1);
+		entityTransaction.commit();
+		return application1;
+	}
 }

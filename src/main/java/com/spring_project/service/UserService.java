@@ -50,7 +50,12 @@ public class UserService {
 		return user1.getApplication();
 	}
 	
-	public Application getById(int id){
+	public Application getById(Application application){
+		return dao.updateApplication(application);
+	}
+	
+	public Application getByIdd(int id){
 		return dao.findApplicationById(id);
 	}
+	
 }

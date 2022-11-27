@@ -16,14 +16,14 @@
 			<th>Edit</th>
 		</tr>
 
-		<c:forEach items="${application}" var="application">
+		
 			<tr>
 				<td>${application.name }</td>
 				<td>${application.username }</td>
 				<td>${application.password }</td>
 				<td><a href="edit?id=${application.id}">Edit</a></td>
 			</tr>
-		</c:forEach>
+		
 	</table>
 
 </body>

@@ -16,13 +16,14 @@
 			<th>Delete</th>
 			<th>Edit</th>
 		</tr>
-
+<c:forEach items="${list}" var="application">
 			<tr>
 				<td>${application.name }</td>
 				<td><a href="view?id=${application.id}">View</a></td>
 				<td><a href="delete?id=${application.id}">Delete</a></td>
 				<td><a href="edit?id=${application.id}">Edit</a></td>
 			</tr>
+			</c:forEach>
 	</table>
 
 </body>
